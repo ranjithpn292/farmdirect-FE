@@ -1,5 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { useLanguage } from "../context/LanguageContext";
 
 const fadeIn = keyframes`
   from { opacity: 0; transform: scale(0.95); }
@@ -18,7 +19,7 @@ const Card = styled.div`
   background: white;
   padding: 60px;
   border-radius: 28px;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
   text-align: center;
   animation: ${fadeIn} 0.6s ease;
 `;
@@ -54,9 +55,10 @@ const LangButton = styled.button`
 
 export default function LanguageSelect() {
   const navigate = useNavigate();
+  const { setLanguage } = useLanguage();
 
   const selectLanguage = (lang) => {
-    localStorage.setItem("appLanguage", lang);
+    setLanguage(lang);
     navigate("/home");
   };
 

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import { useLanguage } from "../context/LanguageContext";
 
 const Page = styled.div`
   min-height: 100vh;
@@ -42,14 +43,16 @@ const CTAButton = styled(Link)`
 
 export default function Home() {
   const language = localStorage.getItem("appLanguage");
+  const { t } = useLanguage();
 
   return (
     <Page>
       <Navbar />
       <Hero>
-        <h2>Welcome to FarmDirect 🌾</h2>
+        <h2>{t.welcome}</h2>
+        <p>{t.empowering}</p>
         <p>Selected Language: {language}</p>
-        <CTAButton to="/add-stock">Add Your Product</CTAButton>
+        <CTAButton to="/add-stock">{t.addProduct}</CTAButton>
       </Hero>
     </Page>
   );

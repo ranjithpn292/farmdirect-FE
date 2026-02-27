@@ -1,17 +1,20 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { LanguageProvider } from "./context/LanguageContext";
 import LanguageSelect from "./pages/LanguageSelect";
 import Home from "./pages/Home";
 import AddStock from "./pages/AddStock";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<LanguageSelect />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/add-stock" element={<AddStock />} />
-      </Routes>
-    </BrowserRouter>
+    <LanguageProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<LanguageSelect />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/add-stock" element={<AddStock />} />
+        </Routes>
+      </BrowserRouter>
+    </LanguageProvider>
   );
 }
 
