@@ -4,6 +4,7 @@ import LanguageSelect from "./pages/LanguageSelect";
 import Home from "./pages/Home";
 import AddStock from "./pages/AddStock";
 import FarmerDetails from "./pages/FarmerDetails";
+import ThankYou from "./pages/Thakyou";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/add-stock" element={<AddStock />} />
           <Route path="/farmer-details" element={<FarmerDetails />} />
+          <Route path="/thank-you" element={<ThankYou />} />
         </Routes>
       </BrowserRouter>
     </LanguageProvider>

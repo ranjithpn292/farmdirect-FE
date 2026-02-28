@@ -3,6 +3,7 @@ import axios from "axios";
 import styled, { keyframes } from "styled-components";
 import Navbar from "../components/Navbar";
 import { useLanguage } from "../context/LanguageContext";
+import { Navigate, useNavigate } from "react-router-dom";
 
 /* =========================
    Animations
@@ -190,6 +191,7 @@ const Footer = styled.footer`
 
 export default function AddStock() {
   const { t } = useLanguage();
+  const navigate = useNavigate();
   const farmerDetails = JSON.parse(localStorage.getItem("farmerDetails"));
 
   const [data, setData] = useState({
@@ -236,6 +238,7 @@ export default function AddStock() {
       setError(t.errorMessage);
     } finally {
       setLoading(false);
+      navigate("/thank-you");
     }
   };
 
