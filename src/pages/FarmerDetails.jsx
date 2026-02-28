@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import styled, { keyframes } from "styled-components";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
@@ -111,6 +111,7 @@ export default function FarmerDetails() {
   const navigate = useNavigate();
   const { t } = useLanguage();
   const [error, setError] = useState("");
+  const topRef = useRef(null);
 
   const [farmer, setFarmer] = useState({
     name: "",
@@ -122,6 +123,13 @@ export default function FarmerDetails() {
   const handleNext = () => {
     if (!farmer.name || !farmer.phone) {
       setError(t.requiredFarmerDetails);
+
+      // Scroll to top smoothly
+      topRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+
       return;
     }
 
@@ -136,7 +144,7 @@ export default function FarmerDetails() {
 
       <ContentWrapper>
         <Container>
-          <Card>
+          <Card ref={topRef}>
             {error && <AlertBox>{error}</AlertBox>}
             <Title>{t.farmerDetailsTitle}</Title>
 
