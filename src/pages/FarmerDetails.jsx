@@ -143,31 +143,31 @@ export default function FarmerDetails() {
     };
 
     if (!farmer.name.trim()) {
-      newErrors.name = "Name is required";
-      hasError = true;
-    } else if (!/^[0-9]+$/.test(farmer.phone.trim())) {
-      newErrors.phone = "Phone number must contain only digits";
-      hasError = true;
-    } else if (farmer.phone.trim().length < 10) {
-      newErrors.phone = "Phone number must be exactly 10 digits";
-      hasError = true;
-    } else if (farmer.phone.trim().length > 10) {
-      newErrors.phone = "Phone number cannot exceed 10 digits";
+      newErrors.name = t.nameRequired;
       hasError = true;
     }
 
     if (!farmer.phone.trim()) {
-      newErrors.phone = "Phone number is required";
+      newErrors.phone = t.phoneRequired;
+      hasError = true;
+    } else if (!/^[0-9]+$/.test(farmer.phone.trim())) {
+      newErrors.phone = t.phoneInvalid;
+      hasError = true;
+    } else if (farmer.phone.trim().length < 10) {
+      newErrors.phone = t.phoneLength;
+      hasError = true;
+    } else if (farmer.phone.trim().length > 10) {
+      newErrors.phone = t.phoneLength;
       hasError = true;
     }
 
     if (!farmer.village.trim()) {
-      newErrors.village = "Village name is required";
+      newErrors.village = t.villageRequired;
       hasError = true;
     }
 
     if (!farmer.district.trim()) {
-      newErrors.district = "District is required";
+      newErrors.district = t.districtRequired;
       hasError = true;
     }
 
