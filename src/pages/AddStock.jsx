@@ -192,7 +192,7 @@ export default function AddStock() {
   const { t } = useLanguage();
 
   const [data, setData] = useState({
-    category: t.coconuts,
+    category: "Coconuts",
     productType: "",
     quantity: "",
     pricePerUnit: "",
@@ -288,7 +288,7 @@ export default function AddStock() {
                   }
                 >
                   <option value="">{t.selectType}</option>
-                  {(data.category === "Fruits"
+                  {(data.category === t.fruits
                     ? fruitsList
                     : vegetablesList
                   ).map((item) => (
