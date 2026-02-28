@@ -307,7 +307,7 @@ export default function AddStock() {
               onChange={(e) => setData({ ...data, quantity: e.target.value })}
             />
 
-            <SubHeading>{t.price} (₹)</SubHeading>
+            <SubHeading>{t.price}</SubHeading>
             <Input
               type="number"
               value={data.pricePerUnit}

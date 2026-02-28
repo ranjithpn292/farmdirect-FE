@@ -6,6 +6,9 @@ const translations = {
     // Navbar
     homeNav: "Home",
     addStockNav: "Add Stock",
+    contactUs: "Contact Us Directly",
+    contactDesc:
+      "If you prefer, you can contact us directly instead of filling the form.",
 
     // Home Page
     welcome: "Welcome to FarmDirect",
@@ -51,6 +54,8 @@ const translations = {
 
     homeNav: "హోమ్",
     addStockNav: "పంట జోడించండి",
+    contactUs: "మాతో నేరుగా సంప్రదించండి",
+    contactDesc: "ఫారం నింపకుండా మాతో నేరుగా మాట్లాడవచ్చు.",
 
     welcome: "ఫార్మ్‌డైరెక్ట్‌కు స్వాగతం",
     empowering: "రైతులకు నేరుగా సహాయం",
@@ -89,6 +94,8 @@ const translations = {
 
     homeNav: "ಮುಖಪುಟ",
     addStockNav: "ಬೆಳೆ ಸೇರಿಸಿ",
+    contactUs: "ನಮ್ಮನ್ನು ನೇರವಾಗಿ ಸಂಪರ್ಕಿಸಿ",
+    contactDesc: "ಫಾರ್ಮ್ ತುಂಬದೆ ನಮ್ಮನ್ನು ನೇರವಾಗಿ ಸಂಪರ್ಕಿಸಬಹುದು.",
 
     welcome: "ಫಾರ್ಮ್‌ಡೈರೆಕ್ಟ್‌ಗೆ ಸ್ವಾಗತ",
     empowering: "ರೈತರಿಗೆ ನೇರ ಸಹಾಯ",
