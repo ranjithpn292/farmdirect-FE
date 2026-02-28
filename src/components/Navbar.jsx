@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { useLanguage } from "../context/LanguageContext";
 
 const NavbarWrapper = styled.nav`
   background: #1b5e20;
@@ -40,13 +41,15 @@ const NavLinks = styled.div`
 `;
 
 export default function Navbar() {
+  const { t } = useLanguage();
+
   return (
     <NavbarWrapper>
       <NavContent>
         <Logo>🌿 FarmDirect</Logo>
         <NavLinks>
-          <Link to="/">Home</Link>
-          <Link to="/add-stock">Add Stock</Link>
+          <Link to="/">{t.homeNav}</Link>
+          <Link to="/add-stock">{t.addStockNav}</Link>
         </NavLinks>
       </NavContent>
     </NavbarWrapper>

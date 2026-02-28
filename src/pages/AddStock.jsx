@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import styled, { keyframes } from "styled-components";
 import Navbar from "../components/Navbar";
+import { useLanguage } from "../context/LanguageContext";
 
 /* =========================
    Animations
@@ -188,8 +189,10 @@ const Footer = styled.footer`
 ========================= */
 
 export default function AddStock() {
+  const { t } = useLanguage();
+
   const [data, setData] = useState({
-    category: "Coconuts",
+    category: t.coconuts,
     productType: "",
     quantity: "",
     pricePerUnit: "",
@@ -200,20 +203,20 @@ export default function AddStock() {
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const fruitsList = ["Apple", "Banana", "Mango", "Orange"];
-  const vegetablesList = ["Tomato", "Potato", "Onion", "Carrot"];
+  const fruitsList = t.fruitsList;
+  const vegetablesList = t.vegetablesList;
 
   const handleSubmit = async () => {
     setError("");
     setSuccess(false);
 
     if (!data.quantity || !data.pricePerUnit || !data.location) {
-      setError("Please fill all required details 🙏");
+      setError(t.fillDetails);
       return;
     }
 
     if (data.category !== "Coconuts" && !data.productType) {
-      setError("Please select product type");
+      setError(t.selectProductType);
       return;
     }
 
@@ -222,14 +225,14 @@ export default function AddStock() {
       await axios.post("http://localhost:8080/api/coconuts", data);
       setSuccess(true);
       setData({
-        category: "Coconuts",
+        category: t.coconuts,
         productType: "",
         quantity: "",
         pricePerUnit: "",
         location: "",
       });
     } catch {
-      setError("Something went wrong. Try again.");
+      setError(t.errorMessage);
     } finally {
       setLoading(false);
     }
@@ -242,26 +245,23 @@ export default function AddStock() {
       <ContentWrapper>
         <Container>
           <InfoSection>
-            <h2>Grow More. Earn More.</h2>
-            <p>
-              Sell coconuts, fruits, and vegetables directly to buyers.
-              Transparent pricing. No middlemen. Better income.
-            </p>
+            <h2>{t.growTitle}</h2>
+            <p>{t.growDesc}</p>
 
             <Categories>
-              <CategoryCard>🌴 Coconuts</CategoryCard>
-              <CategoryCard>🍎 Fruits</CategoryCard>
-              <CategoryCard>🥕 Vegetables</CategoryCard>
+              <CategoryCard>🌴 {t.coconuts}</CategoryCard>
+              <CategoryCard>🍎 {t.fruits}</CategoryCard>
+              <CategoryCard>🥕 {t.vegetables}</CategoryCard>
             </Categories>
           </InfoSection>
 
           <FormCard>
-            <Title>Add Product Stock</Title>
+            <Title>{t.addProductStock}</Title>
 
             {error && <AlertBox type="error">{error}</AlertBox>}
-            {success && <AlertBox>Stock Added Successfully!</AlertBox>}
+            {success && <AlertBox>{t.successMessage}</AlertBox>}
 
-            <SubHeading>Product Category</SubHeading>
+            <SubHeading>{t.productCategory}</SubHeading>
             <Select
               value={data.category}
               onChange={(e) =>
@@ -273,9 +273,9 @@ export default function AddStock() {
                 })
               }
             >
-              <option>Coconuts</option>
-              <option>Fruits</option>
-              <option>Vegetables</option>
+              <option>{t.coconuts}</option>
+              <option>{t.fruits}</option>
+              <option>{t.vegetables}</option>
             </Select>
 
             {data.category !== "Coconuts" && (
@@ -287,7 +287,7 @@ export default function AddStock() {
                     setData({ ...data, productType: e.target.value })
                   }
                 >
-                  <option value="">Select Type</option>
+                  <option value="">{t.selectType}</option>
                   {(data.category === "Fruits"
                     ? fruitsList
                     : vegetablesList
@@ -299,9 +299,7 @@ export default function AddStock() {
             )}
 
             <SubHeading>
-              {data.category === "Coconuts"
-                ? "Quantity (Number of Pieces)"
-                : "Quantity (in Kilograms)"}
+              {data.category === "Coconuts" ? t.quantityPieces : t.quantityKg}
             </SubHeading>
             <Input
               type="number"
@@ -309,7 +307,7 @@ export default function AddStock() {
               onChange={(e) => setData({ ...data, quantity: e.target.value })}
             />
 
-            <SubHeading>Price Per Unit (₹)</SubHeading>
+            <SubHeading>{t.price} (₹)</SubHeading>
             <Input
               type="number"
               value={data.pricePerUnit}
@@ -318,7 +316,7 @@ export default function AddStock() {
               }
             />
 
-            <SubHeading>Farm Location</SubHeading>
+            <SubHeading>{t.location}</SubHeading>
             <Input
               type="text"
               value={data.location}
@@ -326,7 +324,7 @@ export default function AddStock() {
             />
 
             <Button onClick={handleSubmit} disabled={loading}>
-              {loading ? "Submitting..." : "Submit Product"}
+              {loading ? "Submitting..." : t.submit}
             </Button>
           </FormCard>
         </Container>
