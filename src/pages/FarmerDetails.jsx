@@ -79,6 +79,12 @@ const Input = styled.input`
   }
 `;
 
+const FieldError = styled.span`
+  color: #c62828;
+  font-size: 13px;
+  margin-top: 6px;
+`;
+
 const Button = styled.button`
   margin-top: 40px;
   padding: 18px;
@@ -110,7 +116,13 @@ const AlertBox = styled.div`
 export default function FarmerDetails() {
   const navigate = useNavigate();
   const { t } = useLanguage();
-  const [error, setError] = useState("");
+  const [errors, setErrors] = useState({
+    name: "",
+    phone: "",
+    village: "",
+    district: "",
+  });
+
   const topRef = useRef(null);
 
   const [farmer, setFarmer] = useState({
@@ -121,19 +133,54 @@ export default function FarmerDetails() {
   });
 
   const handleNext = () => {
-    if (!farmer.name || !farmer.phone) {
-      setError(t.requiredFarmerDetails);
+    let hasError = false;
 
-      // Scroll to top smoothly
+    const newErrors = {
+      name: "",
+      phone: "",
+      village: "",
+      district: "",
+    };
+
+    if (!farmer.name.trim()) {
+      newErrors.name = "Name is required";
+      hasError = true;
+    } else if (!/^[0-9]+$/.test(farmer.phone.trim())) {
+      newErrors.phone = "Phone number must contain only digits";
+      hasError = true;
+    } else if (farmer.phone.trim().length < 10) {
+      newErrors.phone = "Phone number must be exactly 10 digits";
+      hasError = true;
+    } else if (farmer.phone.trim().length > 10) {
+      newErrors.phone = "Phone number cannot exceed 10 digits";
+      hasError = true;
+    }
+
+    if (!farmer.phone.trim()) {
+      newErrors.phone = "Phone number is required";
+      hasError = true;
+    }
+
+    if (!farmer.village.trim()) {
+      newErrors.village = "Village name is required";
+      hasError = true;
+    }
+
+    if (!farmer.district.trim()) {
+      newErrors.district = "District is required";
+      hasError = true;
+    }
+
+    setErrors(newErrors); // ✅ Only one state update
+
+    if (hasError) {
       topRef.current?.scrollIntoView({
         behavior: "smooth",
         block: "start",
       });
-
       return;
     }
 
-    setError("");
     localStorage.setItem("farmerDetails", JSON.stringify(farmer));
     navigate("/add-stock");
   };
@@ -145,15 +192,18 @@ export default function FarmerDetails() {
       <ContentWrapper>
         <Container>
           <Card ref={topRef}>
-            {error && <AlertBox>{error}</AlertBox>}
             <Title>{t.farmerDetailsTitle}</Title>
 
             <SubHeading>{t.name}</SubHeading>
             <Input
               value={farmer.name}
-              onChange={(e) => setFarmer({ ...farmer, name: e.target.value })}
+              onChange={(e) => {
+                setFarmer({ ...farmer, name: e.target.value });
+                setErrors({ name: "" });
+              }}
               placeholder={t.enterName}
             />
+            {errors.name && <FieldError>{errors.name}</FieldError>}
 
             <SubHeading>{t.phoneNumber}</SubHeading>
             <Input
@@ -162,6 +212,7 @@ export default function FarmerDetails() {
               onChange={(e) => setFarmer({ ...farmer, phone: e.target.value })}
               placeholder={t.enterPhone}
             />
+            {errors.phone && <FieldError>{errors.phone}</FieldError>}
 
             <SubHeading>{t.villageLabel}</SubHeading>
             <Input
@@ -171,6 +222,7 @@ export default function FarmerDetails() {
               }
               placeholder={t.enterVillage}
             />
+            {errors.village && <FieldError>{errors.village}</FieldError>}
 
             <SubHeading>{t.districtLabel}</SubHeading>
             <Input
@@ -180,6 +232,7 @@ export default function FarmerDetails() {
               }
               placeholder={t.enterDistrict}
             />
+            {errors.district && <FieldError>{errors.district}</FieldError>}
 
             <Button onClick={handleNext}>{t.continue}</Button>
           </Card>
