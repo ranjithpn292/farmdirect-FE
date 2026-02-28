@@ -19,6 +19,7 @@ const NavContent = styled.div`
 const Logo = styled.h1`
   font-size: 22px;
   font-weight: bold;
+  cursor: pointer;
 `;
 
 const NavLinks = styled.div`
