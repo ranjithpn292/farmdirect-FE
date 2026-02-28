@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useLanguage } from "../context/LanguageContext";
 
 const NavbarWrapper = styled.nav`
@@ -42,14 +42,19 @@ const NavLinks = styled.div`
 
 export default function Navbar() {
   const { t } = useLanguage();
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/");
+  };
 
   return (
     <NavbarWrapper>
       <NavContent>
-        <Logo>🌿 FarmDirect</Logo>
+        <Logo onClick={handleClick}>🌿 FarmDirect</Logo>
         <NavLinks>
-          <Link to="/">{t.homeNav}</Link>
-          <Link to="/add-stock">{t.addStockNav}</Link>
+          {/* <Link to="/">{t.homeNav}</Link>
+          <Link to="/add-stock">{t.addStockNav}</Link> */}
         </NavLinks>
       </NavContent>
     </NavbarWrapper>

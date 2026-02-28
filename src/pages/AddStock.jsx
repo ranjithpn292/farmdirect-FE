@@ -190,6 +190,7 @@ const Footer = styled.footer`
 
 export default function AddStock() {
   const { t } = useLanguage();
+  const farmerDetails = JSON.parse(localStorage.getItem("farmerDetails"));
 
   const [data, setData] = useState({
     category: "Coconuts",

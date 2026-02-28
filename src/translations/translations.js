@@ -25,6 +25,19 @@ const translations = {
     fruits: "Fruits",
     vegetables: "Vegetables",
 
+    // Farmer Details Page
+    farmerDetailsTitle: "Farmer Details",
+    name: "Name",
+    phoneNumber: "Phone Number",
+    villageLabel: "Village",
+    districtLabel: "District",
+    enterName: "Enter your full name",
+    enterPhone: "Enter your phone number",
+    enterVillage: "Enter your village",
+    enterDistrict: "Enter your district",
+    continue: "Continue →",
+    requiredFarmerDetails: "Please fill required details",
+
     // Dynamic Product Lists
     fruitsList: ["Apple", "Banana", "Mango", "Orange"],
     vegetablesList: ["Tomato", "Potato", "Onion", "Carrot"],
@@ -69,6 +82,18 @@ const translations = {
     fruits: "పండ్లు",
     vegetables: "కూరగాయలు",
 
+    farmerDetailsTitle: "రైతు వివరాలు",
+    name: "పేరు",
+    phoneNumber: "ఫోన్ నంబర్",
+    villageLabel: "గ్రామం",
+    districtLabel: "జిల్లా",
+    enterName: "మీ పూర్తి పేరు నమోదు చేయండి",
+    enterPhone: "మీ ఫోన్ నంబర్ నమోదు చేయండి",
+    enterVillage: "మీ గ్రామం నమోదు చేయండి",
+    enterDistrict: "మీ జిల్లా నమోదు చేయండి",
+    continue: "కొనసాగించండి →",
+    requiredFarmerDetails: "దయచేసి అవసరమైన వివరాలు నమోదు చేయండి",
+
     fruitsList: ["ఆపిల్", "అరటి", "మామిడి", "నారింజ"],
     vegetablesList: ["టమోటా", "బంగాళాదుంప", "ఉల్లి", "క్యారెట్"],
 
@@ -108,6 +133,18 @@ const translations = {
     coconuts: "ತೆಂಗಿನಕಾಯಿ",
     fruits: "ಹಣ್ಣುಗಳು",
     vegetables: "ತರಕಾರಿಗಳು",
+
+    farmerDetailsTitle: "ರೈತನ ವಿವರಗಳು",
+    name: "ಹೆಸರು",
+    phoneNumber: "ದೂರವಾಣಿ ಸಂಖ್ಯೆ",
+    villageLabel: "ಹಳ್ಳಿ",
+    districtLabel: "ಜಿಲ್ಲೆ",
+    enterName: "ನಿಮ್ಮ ಪೂರ್ಣ ಹೆಸರನ್ನು ನಮೂದಿಸಿ",
+    enterPhone: "ನಿಮ್ಮ ದೂರವಾಣಿ ಸಂಖ್ಯೆಯನ್ನು ನಮೂದಿಸಿ",
+    enterVillage: "ನಿಮ್ಮ ಹಳ್ಳಿಯನ್ನು ನಮೂದಿಸಿ",
+    enterDistrict: "ನಿಮ್ಮ ಜಿಲ್ಲೆಯನ್ನು ನಮೂದಿಸಿ",
+    continue: "ಮುಂದುವರಿಸಿ →",
+    requiredFarmerDetails: "ದಯವಿಟ್ಟು ಅಗತ್ಯ ಮಾಹಿತಿಯನ್ನು ನಮೂದಿಸಿ",
 
     fruitsList: ["ಸೇಬು", "ಬಾಳೆಹಣ್ಣು", "ಮಾವಿನಹಣ್ಣು", "ಕಿತ್ತಳೆ"],
     vegetablesList: ["ಟೊಮೇಟೊ", "ಆಲೂಗಡ್ಡೆ", "ಈರುಳ್ಳಿ", "ಕ್ಯಾರೆಟ್"],

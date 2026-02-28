@@ -107,7 +107,7 @@ export default function Home() {
         <h2>{t.welcome}</h2>
         <p>{t.empowering}</p>
         <p>Selected Language: {language}</p>
-        <CTAButton to="/add-stock">{t.addProduct}</CTAButton>
+        <CTAButton to="/farmer-details">{t.addProduct}</CTAButton>
         <SecondaryButton onClick={handleContact}>
           📞 {t.contactUs}
         </SecondaryButton>
